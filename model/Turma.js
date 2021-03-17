@@ -11,4 +11,6 @@ const Turma = db.define("Turma",
     }
 );
 
+Turma.belongsTo(Coach);
+
 module.exports = Turma;

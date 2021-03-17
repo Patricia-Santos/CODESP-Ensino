@@ -1,9 +1,14 @@
+require('dotenv').config()
 const Sequelize = require("sequelize");
 const db = require("./db");
+const Aluno = require("./model/Aluno");
+const Coach = require("./model/Coach");
 const Orientador = require("./model/Orientador");
+const Turma = require("./model/Turma");
+
 
 async function sincronizar(){
-  await db.sync();
+  await db.sync({force : true});
 }
 
 async function inserir(){

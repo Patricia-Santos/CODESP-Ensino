@@ -16,8 +16,18 @@ const Aluno = db.define("Aluno",
             type: DataTypes.STRING,
             allowNull: false
         },
-        contato: DataTypes.STRING
+        contato: DataTypes.STRING,
+        
+        TurmaId: {
+          type: DataTypes.INTEGER,
+          references: {
+            model: Turma,
+            key: 'id'
+          }
     }
-);
+});
+
+Aluno.belongsTo(Turma);
+Turma.hasMany(Aluno, {as: "Alunos"});
 
 module.exports = Aluno;

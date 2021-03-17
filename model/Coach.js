@@ -16,8 +16,21 @@ const Coach = db.define("Coach",
             type: DataTypes.STRING,
             allowNull: false
         },
-        contato: DataTypes.STRING
+        contato: DataTypes.STRING,
+
+        OrientadorId: {
+          type: DataTypes.INTEGER,
+          references: {
+            model: Orientador,
+            key: 'id'
+          }
+        }
     }
 );
+
+Coach.belongsTo(Turma);
+
+Coach.belongsTo(Orientador);
+Orientador.hasMany(Coach, {as: "Coaches"});
 
 module.exports = Coach;
